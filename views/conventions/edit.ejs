@@ -1,0 +1,26 @@
+<% include ../partials/header %>
+<div class="container">
+  <h1 class="text-center">Edit <%= convention.name %></h1>
+  <div class="row addCon">
+    <form action="/cons/<%= convention._id%>?_method=PUT" method="post">
+      <div class="form-group">
+        <input class="form-control" type="text" name="convention[name]" value="<%= convention.name %>">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text" name="convention[location]" value="<%= convention.location %>">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text" name="convention[image]" value="<%= convention.image %>">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text" name="convention[description]" value="<%= convention.description %>">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-lg btn-primary btn-block">Submit</button>
+      </div>
+    </form>
+    <a href="/">Back to Convention List</a>
+  </div>
+</div>
+
+<% include ../partials/footer %>

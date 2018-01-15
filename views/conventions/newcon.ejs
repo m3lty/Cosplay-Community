@@ -1,0 +1,25 @@
+<% include ../partials/header %>
+<div class="container">
+  <div class="row addCon">
+    <form action="/cons" enctype="multipart/form-data" method="post">
+      <div class="form-group">
+        <input class="form-control" type="text" name="name" placeholder="Convention Name">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="text" name="location" placeholder="Convention Location">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="file" name="conImg">
+      </div>
+      <div class="form-group">
+        <input class="form-control" type="paragraph" name="description" placeholder="Description">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-lg btn-primary btn-block">Submit</button>
+      </div>
+    </form>
+    <a href="/">Back to Convention List</a>
+  </div>
+</div>
+
+<% include ../partials/footer %>

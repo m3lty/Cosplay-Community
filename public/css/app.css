@@ -1,0 +1,33 @@
+.socialMedia{
+  color: green;
+}
+.jumbotron{
+  background-image: url("http://www.candidslice.com/wp-content/uploads/2014/05/9-Rules-for-Surviving-an-Anime-Convention-featured.jpg");
+  color:white;
+}
+.addCon{
+  width: 30%;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+.login{
+  width: 30%;
+  margin: 0 auto;
+}
+.footer{
+  padding-top: 30px;
+}
+.thumbnail img {
+  width: 100%;
+}
+.thumbnail{
+  padding: 0;
+}
+.thumbnail .caption-full {
+  padding: 9px;
+}
+.avatar{
+  padding-top: 3px;
+  max-width: 72px;
+  max-height: 72px;
+}
