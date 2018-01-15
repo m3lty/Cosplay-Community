@@ -1,5 +1,1 @@
-Style sign up/login
-
-Style user profile page
-
-make profile page editable
+A very very simple web app. Please forgive me.
