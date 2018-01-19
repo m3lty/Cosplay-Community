@@ -3,6 +3,7 @@ var router = express.Router();
 var multer = require("multer");
 var path = require("path");
 var fs = require("fs");
+var middleware = require("../middleware")
 var upload = multer({storage: multer.diskStorage({
   destination: function(req, file, callback){
     callback(null, "public/assets/images/cons");
@@ -25,7 +26,7 @@ router.get("/", function(req, res){
 
 });
 //create new conventions
-router.get("/newcon", isLoggedIn, function(req, res){
+router.get("/newcon", middleware.isLoggedIn, function(req, res){
   res.render("conventions/newcon");
 });
 //====================
@@ -65,13 +66,13 @@ router.get("/:id", function(req, res){
 });
 
 //EDIT Con
-router.get("/:id/edit", checkOwnership, function(req, res){
+router.get("/:id/edit", middleware.checkConOwnership, function(req, res){
     Conventions.findById(req.params.id, function(err, convention){
     res.render("conventions/edit", {convention:convention});
   });
 });
 //UPDATE CON
-router.put("/:id",checkOwnership, function(req, res){
+router.put("/:id",middleware.checkConOwnership, function(req, res){
   //find and update convention and redir
   Conventions.findByIdAndUpdate(req.params.id, req.body.convention, function(err, updatedConvention){
     if(err){
@@ -86,7 +87,7 @@ router.put("/:id",checkOwnership, function(req, res){
 //==================
 //DELETE CON ROUTE
 //==================
-router.delete("/:id",checkOwnership, function(req, res){
+router.delete("/:id",middleware.checkConOwnership, function(req, res){
   Conventions.findByIdAndRemove(req.params.id, function(err){
     if(err){
       res.redirect("/cons");
@@ -98,7 +99,7 @@ router.delete("/:id",checkOwnership, function(req, res){
 //====================
 // ATTENDING LOGIC
 //====================
-router.post("/:id/attending", isLoggedIn, function(req, res){
+router.post("/:id/attending", middleware.isLoggedIn, function(req, res){
   User.findById(req.user._id, function(err, user){
     if(err){
       console.log(err);
@@ -119,30 +120,6 @@ router.post("/:id/attending", isLoggedIn, function(req, res){
 })
 
 
-function isLoggedIn(req, res, next){
-  if(req.isAuthenticated()){
-    return next();
-  }
-  res.redirect("/login");
-};
 
-function checkOwnership(req, res, next){
-  if (req.isAuthenticated()){
-    Conventions.findById(req.params.id, function(err, convention){
-      if(err){
-        res.redirect("back");
-      } else {
-            if (convention.author.id.equals(req.user._id)){
-              next();
-            } else {
-              res.redirect("back");
-            }
-      }
-    });
-
-  } else {
-    res.redirect("back");
-  }
-};
 
 module.exports = router;
