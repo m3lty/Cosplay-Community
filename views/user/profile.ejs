@@ -10,8 +10,10 @@
         <img src="<%= user.avatar %>" alt="avatar">
         <div class="caption">
           <h1><%= user.username %></h1>
-          <!--SOCIAL MEDIA LINKS -->
-
+        <%  if (currentUser._id.equals(user._id)){ %>
+          <a class="btn btn-md btn-warning" href="/users/<%=user._id%>/edit">Edit Profile</a>
+          <%};%>
+            <!--SOCIAL MEDIA LINKS -->
               <% if(user.socialmedia.twitter){ %>
             <div class="profileMedia">
                 <a href="http://www.twitter.com/<%=user.socialmedia.twitter %>">

@@ -1,7 +1,19 @@
 var express = require("express");
 var router = express.Router();
 var Users = require("../models/user");
+var multer = require("multer");
+var path = require("path");
+var fs = require("fs");
 
+var defaultAvatar = "/assets/images/usr/placeholder-avatar.png";
+var upload = multer({storage: multer.diskStorage({
+  destination: function(req, file, callback){
+    callback(null, "public/assets/images/usr");
+  },
+  filename: function(req, file, callback){
+    callback(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
+  }})
+});
 //===============
 // USER LIST ROUTE
 //===============
@@ -39,12 +51,22 @@ router.get("/:id/edit", function(req, res){
   });
 });
 
-router.put("/:id", function(req, res){
+router.put("/:id", upload.single("avatar"), function(req, res){
   Users.findById(req.params.id, function(err, user){
+    var avatarPath = "public/"+ user.avatar;
     if (err){
       console.log(err);
     } else {
-    console.log(req.body.update);
+    if(req.file){
+      if(user.avatar != defaultAvatar){
+        //Deleting Current Avatar
+        fs.unlinkSync(avatarPath);
+      }
+      user.avatar = req.file.path.slice(6);
+    } else{ //User did not upload new avatar
+      user.avatar = user.avatar
+    }
+    //Updating user information from form
     user.bio = req.body.update.bio;
     user.socialmedia.twitter = req.body.update.twitter;
     user.socialmedia.instagram = req.body.update.instagram;

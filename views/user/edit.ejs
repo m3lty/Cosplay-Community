@@ -1,8 +1,14 @@
 <% include ../partials/header %>
-<div class="container">
+<div class="container">x
   <h1 class="text-center">Edit <%= user.name %></h1>
   <div class="row addCon">
-    <form action="/users/<%= user._id%>?_method=PUT" method="post">
+    <form action="/users/<%= user._id%>?_method=PUT" enctype="multipart/form-data" method="post">
+      <div class="form-group">
+        <img src="<%= user.avatar %>" alt="User Avatar">
+        <h4>Change Avatar</h4>
+        <p class="small">(Your current avatar will be deleted)</p>
+        <input type="file" name="avatar">
+      </div>
       <div class="form-group">
         <h4>Bio</h4>
         <textarea class="form-control" type="text" name="update[bio]"> <%=user.bio %> </textarea>
