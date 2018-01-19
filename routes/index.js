@@ -14,19 +14,27 @@ var upload = multer({storage: multer.diskStorage({
   }})
 });
 
+//==========================
+// LANDING PAGE ROUTE
+//==========================
 
 router.get("/", function(req, res){
   res.render("landing");
 })
-
+//==========================
+// NEW USER PAGE ROUTE
+//==========================
 router.get("/register", function(req,res){
   res.render("register");
 });
-//sign up logic
+//===================
+// NEW USER POST
+//===================
 router.post("/register",upload.single("avatar"), function(req, res){
   var newUser = new User({
     username: req.body.username,
-    avatar: req.file.path.slice(6)
+    email: req.body.email,
+    birthday:req.body.birthday
   });
   User.register(newUser, req.body.password, function(err, user){
     if(err){
@@ -59,7 +67,9 @@ router.post("/login", userToLowerCase, passport.authenticate("local", {
 router.get("/logout", function(req, res){
   req.logout();
   res.redirect("/");
-})
+});
+
+
 
 function isLoggedIn(req, res, next){
   if(req.isAuthenticated()){

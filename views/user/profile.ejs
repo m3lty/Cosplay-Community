@@ -1,10 +1,49 @@
 <% include ../partials/header %>
+<div class="container">
 <h1>User homepage</h1>
-<div class="thumbnail">
-  <img src="<%= user.avatar %>" alt="avatar">
-  <p><%= user.username %></p>
-  
-</div>
+  <div class="row">
+    <div class="col-md-9 col-sm-9 bio">
+      <p><%= user.bio %></p>
+    </div>
+    <div class="col-md-3 col-sm-3">
+      <div class="thumbnail">
+        <img src="<%= user.avatar %>" alt="avatar">
+        <div class="caption">
+          <h1><%= user.username %></h1>
+          <!--SOCIAL MEDIA LINKS -->
+
+              <% if(user.socialmedia.twitter){ %>
+            <div class="profileMedia">
+                <a href="http://www.twitter.com/<%=user.socialmedia.twitter %>">
+                  <i class="fa fa-twitter"></i> <p><%= user.socialmedia.twitter %></p>
+                </a>
+              <%}%>
+            </div>
+              <% if(user.socialmedia.instagram){ %>
+            <div class="profileMedia">
+                <a href="http://www.instagram.com/<%=user.socialmedia.instagram %>">
+                  <i class="fa fa-instagram"></i> <p><%= user.socialmedia.instagram %></p>
+                </a>
+              <%}%>
+            </div>
+              <% if(user.socialmedia.tumblr){ %>
+            <div class="profileMedia">
+                <a href="<%=user.socialmedia.tumblr%>.tumblr.com">
+                  <i class="fa fa-tumblr"></i> <p><%= user.socialmedia.tumblr %></p>
+                </a>
+              <%}%>
+            </div>
+              <% if(user.socialmedia.facebook){ %>
+            <div class="profileMedia">
+                <a href="http://www.facebook.com/<%=user.socialmedia.facebook %>">
+                  <i class="fa fa-facebook"></i> <p><%= user.socialmedia.facebook %></p>
+                </a>
+              <%}%>
+            </div>
+        </div>
+      </div>
+    </div>
 
 
+  </div>
 <% include ../partials/footer %>

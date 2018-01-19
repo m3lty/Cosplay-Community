@@ -1,4 +1,4 @@
-  var express = require("express");
+var express = require("express");
 var router = express.Router();
 var multer = require("multer");
 var path = require("path");
@@ -13,6 +13,7 @@ var upload = multer({storage: multer.diskStorage({
 });
 
 var Conventions = require("../models/cons");
+var User = require("../models/user");
 
 router.get("/", function(req, res){
   Conventions.find({}, function(err, conventions){
@@ -55,7 +56,7 @@ router.post("/", isLoggedIn, upload.single("conImg"), function(req, res){
 
 //creates page for ID convention
 router.get("/:id", function(req, res){
-  Conventions.findById(req.params.id).populate("comments").exec(function(err, foundCon){
+  Conventions.findById(req.params.id).populate("comments").populate("attending").exec(function(err, foundCon){
     if(err){
       console.log(err);
     } else {
@@ -77,7 +78,7 @@ router.put("/:id",checkOwnership, function(req, res){
     if(err){
       res.redirect("/cons");
     } else {
-
+        console.log(req.body.convention);
         res.redirect("/cons/" + req.params.id);
 
     }
@@ -95,7 +96,28 @@ router.delete("/:id",checkOwnership, function(req, res){
     }
   })
 });
-
+//====================
+// ATTENDING LOGIC
+//====================
+router.post("/:id/attending", isLoggedIn, function(req, res){
+  User.findById(req.user._id, function(err, user){
+    if(err){
+      console.log(err);
+    } else {
+      user.attending.push(req.params.id);
+      user.save();
+      Conventions.findById(req.params.id, function(err, con){
+        if(err){
+          console.log(err);
+        } else {
+          con.attending.push(req.user);
+          con.save();
+        }
+      });
+      res.redirect("back")
+    }
+  });
+})
 
 
 function isLoggedIn(req, res, next){

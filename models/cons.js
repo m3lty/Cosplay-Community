@@ -17,6 +17,12 @@ var conventionSchema = new mongoose.Schema({
       ref: "Comment"
     }
   ],
-  date: String
+  attending: [
+    {
+      type:mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    }
+  ],
+  date: {type: Date, default: Date.now}
 },{usePushEach:true});
 module.exports = mongoose.model("Conventions", conventionSchema);

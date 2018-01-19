@@ -3,6 +3,7 @@
   <div class="row">
     <div class="col-md-3">
       <p class="lead">GonzoCon</p>
+      <!-- Possibly side nav for convention info -->
       <div class="list-group">
         <li class="list-group-item active">Info 1</li>
         <li class="list-group-item">Info 2</li>
@@ -17,7 +18,7 @@
           <h1><a href="#"><%= convention.name %></a></h1>
           <p> <%= convention.description %> </p>
           <p><em>Submitted by <%= convention.author.username %></em></p>
-          
+          <!--Edit and Delete convention if owner -->
           <% if(currentUser && convention.author.id.equals(currentUser._id)){ %>
             <a href="/cons/<%=convention._id %>/edit" class="btn btn-warning">Edit me</a>
             <form action="/cons/<%=convention._id%>?_method=DELETE" method="POST">
@@ -26,24 +27,22 @@
           <% } %>
         </div>
       </div>
-      <div class="well">
-        <div class="text-right">
-          <a class="btn btn-success" href="/cons/<%= convention._id %>/comments/new">Add new comment</a>
-        </div>
-        <hr>
-        <% convention.comments.forEach(function(comment){ %>
-         <div class="row">
-            <div class="col-md-12">
-              <strong><%= comment.author.username %></strong>
-              <span class="pull-right"> 10 days ago</span>
-              <p> <%= comment.text %> </p>
-            </div>
-         </div>
-          <% }); %>
-      </div>
-    </div>
-  </div>
+      <!-- Attending block -->
+      <form action="/cons/<%=convention._id %>/attending" method="POST">
+        <button class="btn btn-md btn-success"> I'm going</button>
+      </form>
+        <h3>Users attending</h3>
+        <div class="row">
+        <% convention.attending.forEach(function(attendee){ %>
+          <div class="imgTooltip col-md-1">
+            <a href="/users/<%= attendee._id %>">
+              <span><%= attendee.username %> </span>
+              <img  class="avatar" src="<%=attendee.avatar %>" alt="userimage">
+          </a>
+          </div>
 
-  <h2><%= convention.location %></h2>
+        <% }); %>
+      </div>
+
 </div>
 <% include ../partials/footer %>

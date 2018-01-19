@@ -1,3 +1,38 @@
+body {
+  background-color: #eef0f2;
+}
+.nav {
+  background-color:#5a5a66;
+  color: #87ff65;
+}
+.footer {
+  background-color:#5a5a66;
+  color: #87ff65;
+}
+.list-group-item.active{
+  background-color: #5a5a66;
+  border-color: #87ff65;
+
+}
+.list-group-item.active:hover{
+  border-color:#87ff65;
+  background-color: #a2999e;
+
+}
+.bio{
+}
+
+.headStuff {
+  color: #87ff65;
+  display:inline;
+}
+.navbar-nav  {
+  color: #87ff65;
+}
+.container{
+  background-color:#c6c7c4;
+  height: 100%;
+}
 .socialMedia{
   color: green;
 }
@@ -30,4 +65,27 @@
   padding-top: 3px;
   max-width: 72px;
   max-height: 72px;
+}
+.conAttendee {
+  display: inline-block;
+}
+
+
+
+.navbar-right li {
+  display:inline-block;
+}
+
+.imgTooltip span {
+  display: none;
+  position:absolute;
+  background: #d4e2f9;
+  color: #000;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+}
+.imgTooltip:hover span {
+  display:block;
 }
