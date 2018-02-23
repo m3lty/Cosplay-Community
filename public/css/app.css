@@ -104,6 +104,21 @@ body {
   background-color:#c6c7c4;
   justify-content: center;
 }
+.cosplayFlex {
+  display: inline-flex;
+  margin:0 10px 0 10px;
+  align-items: center;
+  margin: 10px;
+  max-width: 20%;
+  max-height: 20%;
+  flex-flow:column;
+  background-color:#c6c7c4;
+  justify-content: space-around;
+}
+.cosplayFlex img {
+  max-width: 70%;
+
+}
 .columns {
   padding: 5px;
 }

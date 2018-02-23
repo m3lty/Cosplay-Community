@@ -7,6 +7,7 @@ var Cosplays = require("../models/cosplay");
 var tools = require("../public/js/index.js");
 var multer = require("multer");
 var path = require("path");
+var middleware = require("../middleware/index")
 var upload = multer({storage: multer.diskStorage({
   destination: function(req, file, callback){
     callback(null, "public/assets/images/usr");
@@ -31,6 +32,9 @@ router.get("/", function(req, res){
         } else {
           conventions.sort(tools.upcomingSort);
           cosplays.sort(tools.upcomingSort);
+
+            //res.render("userhome", {conventions:conventions, cosplays:cosplays});
+
           res.render("landing", {conventions:conventions, cosplays:cosplays});
         }
       });
