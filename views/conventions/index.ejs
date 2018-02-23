@@ -3,19 +3,27 @@
   <h1>Conventions</h1>
   <p>Don't see your convention listed here? <a href="cons/newcon">Add a new one!</a></p>
 
-<% conventions.forEach(function(cons){ %>
-  <div class="col-md-3 col-sm-6">
-    <div class="thumbnail">
-      <img src=" <%= cons.image %> " alt="con image">
+
+<div class="flexContainer">
+  <div class="conIndex">
+    <h1>Upcoming Cons</h1>
+
+    <div class="upcomingCons">
+
+      <% conventions.slice(0, 3).forEach(function(cons){ %>
+        <div class="conventionWell">
+            <h4> <%= cons.name %> </h4>
+            <h5> <%= cons.location %> </h5>
+            <h6> <%= cons.date %> </h6>
+          <p>
+            <a href="/cons/<%= cons._id %>" class="btn btn-primary">More Info</a>
+          </p>
+          </div>
+      <% }); %>
     </div>
-    <div class="caption">
-      <h4> <%= cons.name %> </h4>
-      <h5> <%= cons.location %> </h5>
-    </div>
-    <p>
-      <a href="/cons/<%= cons._id %>" class="btn btn-primary">More Info</a>
-    </p>
+    <a href="/cons/showall">View all cons</a>
   </div>
-<% }); %>
 </div>
+
+
 <% include ../partials/footer %>

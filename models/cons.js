@@ -4,7 +4,8 @@ var conventionSchema = new mongoose.Schema({
   name: String,
   location: String,
   image: String,
-  description: String,
+  url: String,
+  date:Date,
   author: {
     id: {
       type: mongoose.Schema.Types.ObjectId,
@@ -23,6 +24,6 @@ var conventionSchema = new mongoose.Schema({
       ref: "User",
     }
   ],
-  date: {type: Date, default: Date.now}
+  datePosted: {type: Date, default: Date.now}
 },{usePushEach:true});
 module.exports = mongoose.model("Conventions", conventionSchema);

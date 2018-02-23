@@ -1,0 +1,17 @@
+<% include ../partials/header %>
+<div class="container">
+<h1>Add new Cosplay </h1>
+<script>dropDownPopulate(cons);</script>
+<form action="/cosplay" enctype="multipart/form-data" method="POST">
+  <div class="form-group">
+    <input type="text" name="character" placeholder="Character name">
+    <input type="text" name="series" placeholder="Series name">
+    <h3>Select default photo</h3>
+    <input type="file" name="usrPhoto" value="photo">
+    <button class="btn btn-lg btn-primary btn-block">Submit</button>
+
+  </div>
+    </div>
+</form>
+
+<% include ../partials/footer %>

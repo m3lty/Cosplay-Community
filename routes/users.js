@@ -4,7 +4,7 @@ var Users = require("../models/user");
 var multer = require("multer");
 var path = require("path");
 var fs = require("fs");
-
+var tools = require("../public/js/index.js");
 var defaultAvatar = "/assets/images/usr/placeholder-avatar.png";
 var upload = multer({storage: multer.diskStorage({
   destination: function(req, file, callback){
@@ -33,11 +33,11 @@ router.get("/", function(req, res){
 //==============
 
 router.get("/:id", function(req, res){
-  Users.findById(req.params.id).populate("attending").exec(function(err, foundUser){
+  Users.findById(req.params.id).populate("attending").populate("uploads").exec(function(err, foundUser){
     if (err){
       console.log(err);
     } else {
-      console.log(foundUser);
+      foundUser.attending.sort(tools.upcomingSort);
       res.render("user/profile", {user: foundUser});
     }
   });

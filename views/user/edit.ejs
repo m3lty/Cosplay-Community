@@ -1,5 +1,5 @@
 <% include ../partials/header %>
-<div class="container">x
+<div class="container">
   <h1 class="text-center">Edit <%= user.name %></h1>
   <div class="row addCon">
     <form action="/users/<%= user._id%>?_method=PUT" enctype="multipart/form-data" method="post">

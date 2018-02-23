@@ -5,16 +5,15 @@
       <p class="lead">GonzoCon</p>
       <!-- Possibly side nav for convention info -->
       <div class="list-group">
-        <li class="list-group-item active">Info 1</li>
-        <li class="list-group-item">Info 2</li>
-        <li class="list-group-item">Info 3</li>
+        <li class="list-group-item active"><a href="#" onclick="toggleBoard()">Main Info</a></li>
+        <li class="list-group-item"><a href="#" onclick="toggleBoard()">Message Board</a></li>
       </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9" id="mainInfo">
       <div class="thumbnail">
         <img clas="img-responsive" src="<%= convention.image %>" >
         <div class="caption-full">
-          <h4 class="pull-right">Too Expensive</h4>
+          <h4 class="pull-right"><%= convention.date %></h4>
           <h1><a href="#"><%= convention.name %></a></h1>
           <p> <%= convention.description %> </p>
           <p><em>Submitted by <%= convention.author.username %></em></p>
@@ -27,13 +26,22 @@
           <% } %>
         </div>
       </div>
+
       <!-- Attending block -->
-      <form action="/cons/<%=convention._id %>/attending" method="POST">
-        <button class="btn btn-md btn-success"> I'm going</button>
-      </form>
+      <% if(currentUser){ %>
+          <% if(currentUser.attending.toString().includes(convention._id.toString())){ %>
+            <form action="/cons/<%=convention._id %>/unattend?_method=PUT" method="POST">
+              <button class="btn btn-md btn-success"> I am NOT going</button>
+            </form>
+            <% } else { %>
+          <form action="/cons/<%=convention._id %>/attending" method="POST">
+            <button class="btn btn-md btn-success"> I am going</button>
+          </form>
+      <% } %>
+      <% } %>
         <h3>Users attending</h3>
         <div class="row">
-        <% convention.attending.forEach(function(attendee){ %>
+        <% convention.attending.slice(0, 10).forEach(function(attendee){ %>
           <div class="imgTooltip col-md-1">
             <a href="/users/<%= attendee._id %>">
               <span><%= attendee.username %> </span>
@@ -44,5 +52,10 @@
         <% }); %>
       </div>
 
-</div>
+</div> <!-- MAIN INFO END -->
+
+  <div class="col-md-9 hiddenElement  " id="secondaryInfo">
+    <p>This should be second </p>
+  </div>
+
 <% include ../partials/footer %>

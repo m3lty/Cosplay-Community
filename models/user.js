@@ -5,13 +5,6 @@ var UserSchema = new mongoose.Schema({
 
   username: {
     type: String,
-    index: true,
-    trim: true,
-    minlength: 3,
-    maxlength: 20,
-    required: true,
-    lowercase: true,
-    unique: true
   },
   email: String,
   birthday: Date,
@@ -36,6 +29,11 @@ var UserSchema = new mongoose.Schema({
     tumblr: String,
     personal: String,
   },
+  uploads: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref:"Cosplays"
+
+  }],
 },{usePushEach:true});
 
 UserSchema.plugin(passportLocalMongoose);

@@ -1,0 +1,13 @@
+<% include ../partials/header %>
+
+<% conventions.forEach(function(cons){ %>
+  <div class="conventionWell">
+  <h4> <%= cons.name %> </h4>
+  <h5> <%= cons.location %> </h5>
+  <h6> <%= cons.date %> </h6>
+  </div>
+<% }); %>
+
+
+
+<% include ../partials/footer %>

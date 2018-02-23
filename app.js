@@ -9,11 +9,13 @@ var express = require("express"),
 var Conventions = require("./models/cons"),
     Comment = require("./models/comment"),
     User = require("./models/user"),
+    Cosplay = require("./models/cosplay"),
     seedDB = require("./seeds");
 //route declarations
 var commentRoutes = require("./routes/comments"),
     conRoutes = require("./routes/cons"),
     indexRoutes = require("./routes/index"),
+    cosplayRoutes = require("./routes/cosplay"),
     userRoutes = require("./routes/users");
 //seedDB();
 //PASSPORT CONFIG
@@ -47,6 +49,7 @@ app.use("/", indexRoutes);
 app.use("/cons/:id/comments", commentRoutes);
 app.use("/cons", conRoutes);
 app.use("/users", userRoutes);
+app.use("/cosplay", cosplayRoutes);
 
 //listening on local port 3000
 app.listen(3000, function(){

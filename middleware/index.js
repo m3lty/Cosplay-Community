@@ -1,7 +1,7 @@
 var middlewareObj = {};
 var Conventions = require("../models/cons");
 var Users = require("../models/user");
-var Comments = require("../models/comments");
+var Comments = require("../models/comment");
 
 
 middlewareObj.isLoggedIn = function(req, res, next){

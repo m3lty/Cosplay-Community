@@ -4,6 +4,7 @@ var multer = require("multer");
 var path = require("path");
 var fs = require("fs");
 var middleware = require("../middleware")
+var tools = require("../public/js/index.js")
 var upload = multer({storage: multer.diskStorage({
   destination: function(req, file, callback){
     callback(null, "public/assets/images/cons");
@@ -14,17 +15,34 @@ var upload = multer({storage: multer.diskStorage({
 });
 var Conventions = require("../models/cons");
 var User = require("../models/user");
-
+//================
+//convention list index page; upcoming etc etc
+//================
 router.get("/", function(req, res){
   Conventions.find({}, function(err, conventions){
     if(err){
       console.log(err);
     } else {
+      conventions.sort(tools.upcomingSort);
       res.render("conventions/index", {conventions:conventions});
     }
   });
 
 });
+//==============
+//full convention list
+//==============
+router.get("/showall", function(req,res){
+  Conventions.find({}, function(err, conventions){
+    if(err){
+      console.log(err);
+    } else {
+      conventions.sort(tools.alphaSort);
+      res.render("conventions/showall", {conventions:conventions});
+    }
+  });
+})
+
 //create new conventions
 router.get("/newcon", middleware.isLoggedIn, function(req, res){
   res.render("conventions/newcon");
@@ -33,16 +51,16 @@ router.get("/newcon", middleware.isLoggedIn, function(req, res){
 // New Convention POST
 //====================
 
-router.post("/", isLoggedIn, upload.single("conImg"), function(req, res){
+router.post("/", middleware.isLoggedIn, upload.single("conImg"), function(req, res){
   var name = req.body.name;
   var location = req.body.location;
   var image = req.file.path.slice(6);
-  var description = req.body.description;
+  var date = req.body.date;
   var author = {
     id: req.user._id,
     username: req.user.username
   };
-  var newCon = {name:name, location:location, image:image, description:description, author: author};
+  var newCon = {name:name, location:location, image:image, date:date, author: author};
 
   Conventions.create(newCon, function(err, newlyAdded){
     if(err){
@@ -117,6 +135,22 @@ router.post("/:id/attending", middleware.isLoggedIn, function(req, res){
       res.redirect("back")
     }
   });
+});
+
+router.put("/:id/unattend", middleware.isLoggedIn, function(req, res){
+  User.findById(req.user._id, function(err, user){
+    if(err){
+      console.log(err);
+    } else {
+      user.attending.remove(req.params.id);
+      user.save();
+      Conventions.findById(req.params.id, function(err, con){
+        con.attending.remove(req.user._id);
+        con.save();
+      });
+      res.redirect("back");
+    }
+  })
 })
 
 

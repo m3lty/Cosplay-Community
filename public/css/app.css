@@ -1,5 +1,5 @@
 body {
-  background-color: #eef0f2;
+
 }
 .nav {
   background-color:#5a5a66;
@@ -30,7 +30,7 @@ body {
   color: #87ff65;
 }
 .container{
-  background-color:#c6c7c4;
+
   height: 100%;
 }
 .socialMedia{
@@ -88,4 +88,62 @@ body {
 }
 .imgTooltip:hover span {
   display:block;
+}
+
+.flexContainer {
+  display: flex;
+  margin:0 10px 0 10px;
+  align-items: center;
+  background-color:#c6c7c4;
+}
+.columns {
+  padding: 5px;
+}
+/*PROFILE STYLES */
+.profileSide {
+  margin-left: auto;
+}
+.profileWell{
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10%;
+    background-color: #eef0f2;
+
+}
+
+.profileImage{
+  width: 200px;
+  height: auto;
+
+}
+.profileMedia {
+  display: flex;
+  justify-content: space-between;
+}
+/*CONVENTION STYLES*/
+.conIndex  {
+
+
+}
+
+
+
+.upcomingCons {
+    display: flex;
+    justify-content:center;
+    border: 2px solid black;
+
+}
+.conventionWell{
+  align-self: flex-start;
+  padding: 10px;
+  width: 33%;
+}
+
+#secondaryInfo{
+
+}
+
+.hiddenElement {
+  display:none;
 }

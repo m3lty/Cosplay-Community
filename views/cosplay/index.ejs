@@ -1,0 +1,10 @@
+<% include ../partials/header %>
+<% cosplays.forEach(function(cosplays){ %>
+  <div>
+    <img class="something" src="<%=cosplays.image %>" alt="cosplay Image">
+    <h4><%= cosplays.character %> </h4>
+    <h5><%= cosplays.author.username %> </h5>
+  </div>
+<% }) %>
+
+<% include ../partials/footer %>
