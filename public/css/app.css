@@ -39,6 +39,7 @@ body {
 .jumbotron{
   background-image: url("http://www.candidslice.com/wp-content/uploads/2014/05/9-Rules-for-Surviving-an-Anime-Convention-featured.jpg");
   color:white;
+  background-repeat: no-repeat;
 }
 .addCon{
   width: 30%;
