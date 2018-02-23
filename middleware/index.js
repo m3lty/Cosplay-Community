@@ -1,5 +1,6 @@
 var middlewareObj = {};
 var Conventions = require("../models/cons");
+var Cosplays = require("../models/cosplay");
 var Users = require("../models/user");
 var Comments = require("../models/comment");
 
@@ -30,4 +31,19 @@ middlewareObj.checkConOwnership = function(req, res, next){
   }
 };
 
+middlewareObj.checkCosplayOwnership = function(req,res,next){
+  if(req.isAuthenticated()){
+    Cosplays.findById(req.params.id, function(err, cosplay){
+      if(err){
+        res.redirect("back");
+      } else {
+        if (cosplay.author.id.equals(req.user._id)){
+          next();
+        } else {
+          res.redirect("back");
+        }
+      }
+    });
+  }
+};
 module.exports = middlewareObj;

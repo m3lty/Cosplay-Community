@@ -1,4 +1,14 @@
 <% include ../partials/header %>
+<img src="<%= cosplay.image %>">
+<h3><%=cosplay.character %> </h3>
+<h4><%=cosplay.series %> </h4>
+<h5><%=cosplay.author.username %></h5>
+
+<% if(currentUser && cosplay.author.id.equals(currentUser._id)){ %>
+<form action="/cosplay/<%=cosplay._id%>?_method=DELETE" method="POST">
+<button class="btn btn-danger">Delete This</button>
+<% } %>
+
 
 
 <% include ../partials/header %>

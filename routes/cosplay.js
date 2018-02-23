@@ -82,8 +82,32 @@ router.post("/", middleware.isLoggedIn, upload.single("usrPhoto"), function(req,
 
 });
 
+//=================
+// SHOW COSPLAY PAGE
+//=================
+
+
 router.get("/:id", function(req, res){
-  res.render("cosplay/show");
-})
+  Cosplays.findById(req.params.id).exec(function(err, foundCosplay){
+    if(err){
+      console.log(err);
+    } else {
+      res.render("cosplay/show", {cosplay: foundCosplay});
+    }
+  });
+
+});
+//================
+//Delete COSPLAY
+//================
+router.delete("/:id", middleware.checkCosplayOwnership, function(req, res){
+  Cosplays.findByIdAndRemove(req.params.id, function(err){
+    if(err){
+      res.redirect("/cosplay");
+    } else {
+      res.redirect("/cosplay");
+    }
+  });
+});
 
 module.exports = router;

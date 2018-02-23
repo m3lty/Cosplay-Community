@@ -4,7 +4,7 @@ var multer = require("multer");
 var path = require("path");
 var fs = require("fs");
 var middleware = require("../middleware")
-var tools = require("../public/js/index.js")
+var tools = require("../public/js/index.js");
 var upload = multer({storage: multer.diskStorage({
   destination: function(req, file, callback){
     callback(null, "public/assets/images/cons");

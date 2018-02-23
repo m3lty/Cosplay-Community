@@ -3,6 +3,8 @@ var router = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
 var Conventions = require("../models/cons");
+var Cosplays = require("../models/cosplay");
+var tools = require("../public/js/index.js");
 var multer = require("multer");
 var path = require("path");
 var upload = multer({storage: multer.diskStorage({
@@ -19,8 +21,23 @@ var upload = multer({storage: multer.diskStorage({
 //==========================
 
 router.get("/", function(req, res){
-  res.render("landing");
-})
+  Conventions.find({}, function(err, conventions){
+    if(err){
+      console.log(err);
+    } else {
+      Cosplays.find({}, function(err, cosplays){
+        if(err){
+          console.log(err);
+        } else {
+          conventions.sort(tools.upcomingSort);
+          cosplays.sort(tools.upcomingSort);
+          res.render("landing", {conventions:conventions, cosplays:cosplays});
+        }
+      });
+    }
+  });
+});
+
 //==========================
 // NEW USER PAGE ROUTE
 //==========================

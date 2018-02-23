@@ -1,8 +1,8 @@
 <% include ../partials/header %>
 <% cosplays.forEach(function(cosplays){ %>
   <div>
-    <img class="something" src="<%=cosplays.image %>" alt="cosplay Image">
-    <h4><%= cosplays.character %> </h4>
+    <img class="cosplayThumbnail" src="<%=cosplays.image %>" alt="cosplay Image">
+    <h4><a href="cosplay/<%=cosplays._id%>"><%= cosplays.character %></a> </h4>
     <h5><%= cosplays.author.username %> </h5>
   </div>
 <% }) %>
