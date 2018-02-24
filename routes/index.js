@@ -26,21 +26,24 @@ router.get("/", function(req, res){
     if(err){
       console.log(err);
     } else {
-      Cosplays.find({}, function(err, cosplays){
+      Cosplays.find({}, function(err,cosplays){
         if(err){
           console.log(err);
         } else {
           conventions.sort(tools.upcomingSort);
           cosplays.sort(tools.upcomingSort);
-
-            //res.render("userhome", {conventions:conventions, cosplays:cosplays});
-
-          res.render("landing", {conventions:conventions, cosplays:cosplays});
+          if(req.user){
+            res.render("userhome", {conventions:conventions, cosplays:cosplays});
+          } else {
+            res.render("landing", {conventions:conventions, cosplays:cosplays});
+          }
         }
       });
     }
   });
 });
+
+
 
 //==========================
 // NEW USER PAGE ROUTE
