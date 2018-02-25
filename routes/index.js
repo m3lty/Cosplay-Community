@@ -55,6 +55,7 @@ router.get("/register", function(req,res){
 // NEW USER POST
 //===================
 router.post("/register", function(req, res){
+
   var newUser = new User({
     username: req.body.username,
     email: req.body.email,

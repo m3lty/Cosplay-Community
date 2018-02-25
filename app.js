@@ -1,5 +1,6 @@
 var express = require("express"),
     app = express(),
+    path = require("path");
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
     passport = require("passport"),
@@ -19,7 +20,8 @@ var commentRoutes = require("./routes/comments"),
     userRoutes = require("./routes/users");
 //seedDB();
 //PASSPORT CONFIG
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname,'public')));
+app.set('views', path.join(__dirname, 'views'));
 app.use(require("express-session")({
   secret:"Oppai Oppai Oppai",
   resave: false,
