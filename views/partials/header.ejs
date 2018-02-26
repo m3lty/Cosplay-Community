@@ -14,21 +14,5 @@
 </head>
 <body>
   <header>
-    <div class="nav navbar-default head">
-      <div class="navbar-brand">
-        <i class="fa fa-heart headStuff"></i>
-        <a class="headStuff" href="/"><p>Gonzocon</p></a>
-      </div>
-      <div class="collapse navbar-collapse">
-        <div class="nav navbar-nav navbar-right">
-          <% if(!currentUser){ %>
-            <li class="headStuff"><a href="/login">Log In</a></li>
-            <li class="headStuff"><a href="/register">Sign Up</a></li>
-        <% } else {  %>
-          <li class="headStuff"><a href="/users/<%=currentUser._id %>">Welcome, <%= toCaps(currentUser.username) %> </a></li>
-          <li class="headStuff"><a href="/logout">Log out</a></li>
-          <% } %>
-        </div>
-      </div>
-    </div>
+
   </header>

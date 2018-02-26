@@ -32,4 +32,9 @@ function dropDownPopulate(cons){
     el.value = cons;
     select.appendchild(el);
  });
+};
+function toggleSignIn(){
+  var flip = document.getElementsByClassName("landingSignUp");
+  flip[0].classList.toggle("hidden");
+  flip[1].classList.toggle("hidden");
 }
