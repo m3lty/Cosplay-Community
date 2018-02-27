@@ -1,11 +1,11 @@
 <div class="row">
-  <% cosplays.slice(0, 4).forEach(function(cosplay){ %>
-    <div class="col-md-6 col-sm-1 contentWell text-center">
+  <% cosplays.slice(0, 3).forEach(function(cosplay){ %>
+    <div class="col-md-2 col-sm-2 col-xs-2 contentWell text-center">
       <div class="imgContainer">
-        <img class="" src="<%=cosplay.image %>">
+        <img class="" src="<%=cosplay.defaultPicture %>">
       </div>
-      <h4><a href="/cosplay/<%=cosplay._id%>"<%= cosplay.character %></h4>
-      <h5><%=cosplay.author.username%></h5>
+      <h4><a href="/cosplay/<%=cosplay._id%>"><%= cosplay.character %></a></h4>
+      <h5><a href="/users/<%=cosplay.author.id%>"><%=cosplay.author.username%></a></h5>
     </div>
   <% });%>
 </div>

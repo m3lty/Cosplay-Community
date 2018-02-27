@@ -1,14 +1,50 @@
 <% include ../partials/header %>
-<img src="<%= cosplay.image %>">
-<h3><%=cosplay.character %> </h3>
-<h4><%=cosplay.series %> </h4>
-<h5><%=cosplay.author.username %></h5>
+<% include ../partials/navbar %>
+<div class="container">
+  <div class="row">
+    <% include ../partials/sidebar %>
 
-<% if(currentUser && cosplay.author.id.equals(currentUser._id)){ %>
-<form action="/cosplay/<%=cosplay._id%>?_method=DELETE" method="POST">
-<button class="btn btn-danger">Delete This</button>
-<% } %>
+    <div class="col-12 col-md-8 defaultCosplayPhoto">
+      <img src="<%=cosplay.defaultPicture %>">
+      <div class="row">
+        <div class="col-6 col-md-6 text-center cosplayInfo">
+          <h1><%=cosplay.character %> from <%=cosplay.series%></h1>
+        </div>
+        <div class="col-6 col-md-5 text-center cosplayInfo">
+          <h3>By <%=cosplay.author.username %> </h3>
+          <small><%=countLikes(cosplay.likedBy)%> likes</small>
+          <% if(currentUser){ %>
+            <% if(currentUser.likes.toString().includes(cosplay._id.toString())){ %>
+              <form action="/cosplay/<%=cosplay._id%>/unlike?_method=PUT" method="POST">
+                <button class="btn btn-md btn-success">Unlike </button>
+              </form>
+            <%} else { %>
+              <form action="/cosplay/<%=cosplay._id%>/like" method="POST">
+              <button class="btn btn-md btn-success">Like</button>
+              </form>
+          <%  }; %>
+          <%};%>
+          <% if(currentUser && cosplay.author.id.equals(currentUser._id)){ %>
+            <a href="/cosplay/<%=cosplay._id %>/edit" class="btn btn-warning">Edit me</a>
+            <form action="/cosplay/<%=cosplay._id%>?_method=DELETE" method="POST">
+              <button class="btn btn-danger">Delete</button>
+            </form>
+          <% } %>
+        </div>
+        <div class="col-12 col-md-12 text-center cosplayDesc">
+          <p> <%=cosplay.desc %> </p>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  <div class="row">
 
 
 
-<% include ../partials/header %>
+    </div>
+  </div>
+  </div>
+
+
+<% include ../partials/footer %>

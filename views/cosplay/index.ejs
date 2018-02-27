@@ -1,8 +1,8 @@
 <% include ../partials/header %>
 <% cosplays.forEach(function(cosplays){ %>
   <div class="conventionWell cosplayFlex">
-    <img class="cosplayThumbnail" src="<%=cosplays.image %>" alt="cosplay Image">
-    <h4><a href="cosplay/<%=cosplays._id%>"><%= cosplays.character %></a> </h4>
+    <img class="cosplayThumbnail" src="<%=cosplays.defaultPicture %>" alt="cosplay Image">
+    <h4><a href="/cosplay/<%=cosplays._id%>"><%= cosplays.character %></a> </h4>
     <h5><%= cosplays.author.username %> </h5>
   </div>
 <% }); %>

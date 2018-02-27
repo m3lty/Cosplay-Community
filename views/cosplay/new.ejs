@@ -1,17 +1,31 @@
 <% include ../partials/header %>
+<% include ../partials/navbar %>
 <div class="container">
-<h1>Add new Cosplay </h1>
-<script>dropDownPopulate(cons);</script>
-<form action="/cosplay" enctype="multipart/form-data" method="POST">
-  <div class="form-group">
-    <input type="text" name="character" placeholder="Character name">
-    <input type="text" name="series" placeholder="Series name">
-    <h3>Select default photo</h3>
-    <input type="file" name="usrPhoto" value="photo">
+  <h1>Add new Cosplay </h1>
+  <form action="/cosplay" enctype="multipart/form-data" method="POST">
+    <div class="form-group">
+      <label for="characterName">Character Name</label>
+      <input type="text" class="form-control" id="characterName" name="character">
+    </div>
+    <div class="form-group">
+      <label for="seriesName">Series Name</label>
+      <input type="text" class="form-control" id="seriesName" name="series">
+    </div>
+    <div class="form-group">
+      <label for="defaultPhoto">Upload Default Photo</label>
+      <input id="defaultPhoto" type="file" name="usrPhoto" aria-describedby="defaultPhotoHelp" value="photo">
+      <small id="defaultPhotoHelp" class="form-text text-muted">
+          This is the default image shown with your Cosplay. This may be changed
+          at any time, and additional photos may be uploaded.
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="cosplayDescription">Decsription</label>
+      <textarea class="form-control" id="cosplayDescription" name="desc" rows="3"></textarea>
+    </div>
     <button class="btn btn-lg btn-primary btn-block">Submit</button>
 
-  </div>
-    </div>
+
 </form>
 
 <% include ../partials/footer %>

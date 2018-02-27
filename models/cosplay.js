@@ -10,14 +10,19 @@ var mongoose= require("mongoose")
     series: String,
     image: String,
     uploaded: Date,
+    defaultPicture: String,
     pics: [{
       path: String,
-      favorite: Boolean,
+      author: mongoose.Schema.Types.ObjectId
     }],
 
     cons: [{
       type:mongoose.Schema.Types.ObjectId,
       ref: "Conventions"
+    }],
+    likedBy: [{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"User"
     }],
     desc: String,
 

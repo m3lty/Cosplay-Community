@@ -1,57 +1,30 @@
 <% include ../partials/header %>
+<% include ../partials/navbar %>
 <!--- Show Attending conventions --->
-<div class="flexContainer">
-  <div class="columns mainProfile">
-    <h1>User homepage</h1>
-
-          <h3>Attending</h3>
-          <% user.attending.forEach(function(con){ %>
-            <a href="/cons/<%=con._id%>">
-              <%= con.name %>
-            </a>
-          <%})%>
-
-          <% user.uploads.forEach(function(cosplay){ %>
-            <p><%= cosplay.character %></p>
-            <img src="<%=cosplay.image %>">
-          <% }); %>
-
-  </div>
-  <div class="columns profileSide">
-    <div class="profileWell">
-      <h2><%= user.username %></h2>
-      <img class="profileImage" src="<%=user.avatar%>" alt="User Avatar">
-      <div class="profileMedia">
-        <% if(user.socialmedia.twitter){ %>
-          <a href="http://www.twitter.com/<%=user.socialmedia.twitter %>">
-            <i class="fa fa-twitter"></i> <p><%= user.socialmedia.twitter %></p>
-          </a>
-          <%}%>
-
-      <% if(user.socialmedia.instagram){ %>
-        <a href="http://www.instagram.com/<%=user.socialmedia.instagram %>">
-          <i class="fa fa-instagram"></i> <p><%= user.socialmedia.instagram %></p>
-        </a>
-      <%}%>
-
-      <% if(user.socialmedia.tumblr){ %>
-        <a href="<%=user.socialmedia.tumblr%>.tumblr.com">
-          <i class="fa fa-tumblr"></i> <p><%= user.socialmedia.tumblr %></p>
-        </a>
-      <%}%>
-      <% if(user.socialmedia.facebook){ %>
-        <a href="http://www.facebook.com/<%=user.socialmedia.facebook %>">
-          <i class="fa fa-facebook"></i> <p><%= user.socialmedia.facebook %></p>
-        </a>
-      <%}%>
-
-    </div>
-    <div class="profileBio">
-    <p><%=user.bio %></p>
-
+<div class="container">
+  <div class="row">
+    <% include ../partials/sidebar %>
+        <div class="col-6 col-md-3 profileAvatar" >
+          <img src="<%= user.avatar %>">
+        </div>
+        <div class="col col-md-6 align-self-right">
+          <h1><%= user.username %> </h1>
+          <p><%= user.bio %></p>
+          <% if(user.socialmedia.twitter) { %>
+            <a href="http://twitter.com/<%=user.socialmedia.twitter %>"><i class="fa fa-twitter"></i> <%=user.socialmedia.twitter%></a>
+          <% }; %>
+          <% if(user.socialmedia.instagram) { %>
+            <a href="#"><i class="fa fa-instagram"></i> <%=user.socialmedia.instagram%></a>
+          <% }; %>
+          <% if(user.socialmedia.facebook) { %>
+            <a href="#"><i class="fa fa-facebook"></i> <%=user.socialmedia.facebook%></a>
+          <% }; %>
+          <% if(user.socialmedia.tumblr) { %>
+            <a href="#"><i class="fa fa-tumblr"></i> <%=user.socialmedia.tumblr%></a>
+          <% }; %>
+        </div>
+        <div class="col-2"></div>
+      <% include ../partials/userCosplays %>
     </div>
 </div>
-</div>
-    </div>
-
 <% include ../partials/footer %>

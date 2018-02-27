@@ -14,6 +14,8 @@ var upload = multer({storage: multer.diskStorage({
     callback(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
   }})
 });
+
+
 //===============
 // USER LIST ROUTE
 //===============

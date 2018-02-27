@@ -1,0 +1,17 @@
+<div class="d-none d-md-block col-md-2" id="sideBar">
+  <% if(currentUser){ %>
+  <div class="avatarContainer text-center">
+    <img  src="<%= currentUser.avatar%>"  alt="Current User Avatar">
+
+    <ul class="landingNav">
+      <li><p><%=currentUser.username%></p></li>
+
+      <li>0 Followers</p> </li>
+      <li><a href="#"><i class="fa fa-cut"></i> Your Cosplays</a> </li>
+      <li><a href="#"><i class="fa fa-calendar"></i> Your Conventions</a></li>
+      <li><a href="#"><i class="fa fa-camera"></i> Your Photos</a> </li>
+
+    </ul>
+  </div>
+ <%};%>
+</div>

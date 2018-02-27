@@ -35,6 +35,6 @@ function dropDownPopulate(cons){
 };
 function toggleSignIn(){
   var flip = document.getElementsByClassName("landingSignUp");
-  flip[0].classList.toggle("hidden");
-  flip[1].classList.toggle("hidden");
-}
+  flip[0].classList.toggle("d-none");
+  flip[1].classList.toggle("d-none");
+};

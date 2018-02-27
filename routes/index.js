@@ -32,11 +32,17 @@ router.get("/", function(req, res){
         } else {
           conventions.sort(tools.upcomingSort);
           cosplays.sort(tools.upcomingSort);
-          if(req.user){
-            res.render("userhome", {conventions:conventions, cosplays:cosplays});
-          } else {
-            res.render("landing", {conventions:conventions, cosplays:cosplays});
-          }
+          User.find({}, function(err, users){
+            if(err){
+              console.log(err);
+            } else {
+              if(req.user){
+                res.render("userhome", {conventions:conventions, cosplays:cosplays, users:users});
+              } else {
+                res.render("landing", {conventions:conventions, cosplays:cosplays, users:users});
+              }
+            }
+          });
         }
       });
     }
@@ -64,7 +70,7 @@ router.post("/register", function(req, res){
   User.register(newUser, req.body.password, function(err, user){
     if(err){
       console.log(err);
-      return res.render("register");
+      return res.redirect("back");
     }
     passport.authenticate("local")(req, res, function(){
       console.log("User " + req.body.username + " registered at " + Date.now());
@@ -80,8 +86,8 @@ router.get("/login", function(req,res){
 });
 
 router.post("/login", userToLowerCase, passport.authenticate("local", {
-  successRedirect: "/cons",
-  failureRedirect: "/login"
+  successRedirect: "/",
+  failureRedirect: "back"
 }), function(req, res){
 
   User.findOne({ username: username.toLowerCase() }).exec(callback)

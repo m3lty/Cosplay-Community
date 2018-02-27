@@ -39,6 +39,19 @@ var UserSchema = new mongoose.Schema({
     ref:"Cosplays"
 
   }],
+  likes: [{
+    type:mongoose.Schema.Types.ObjectId
+  }],
+  notification: [{
+    from:{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"User"
+    },
+    about:{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"Cosplays"
+    }
+  }],
 },{usePushEach:true});
 
 UserSchema.plugin(passportLocalMongoose);

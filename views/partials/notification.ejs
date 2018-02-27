@@ -1,0 +1,9 @@
+
+<% if(currentUser.notification){
+    currentUser.notification.forEach(function(notification){ %>
+      <div class="something">
+
+        <%= notification.username %> liked your <%=notification.about %> cosplay.
+      </div>
+  <% }); %>
+<% } %>

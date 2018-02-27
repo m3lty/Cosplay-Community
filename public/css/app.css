@@ -1,160 +1,40 @@
 body, html {
   height: 100%;
-
 }
-.nav {
-  background-color:#5a5a66;
-  color: #87ff65;
-}
-.footer {
-  background-color:#5a5a66;
-  color: #87ff65;
-}
-.list-group-item.active{
-  background-color: #5a5a66;
-  border-color: #87ff65;
-
-}
-.list-group-item.active:hover{
-  border-color:#87ff65;
-  background-color: #a2999e;
-
-}
-.bio{
+/* NAV STYLES */
+.navbar{
+  background-color:#EAE5DE;
+  margin-bottom: 10px;
 }
 
-#headStuff {
-  color: #87ff65;
-  display:inline;
-}
-
-.navbar-nav  {
-  color: #87ff65;
-}
-.container{
-
-  height: 100%;
-}
-.socialMedia{
-  color: green;
-}
-.jumbotron{
-  background-image: url("http://www.candidslice.com/wp-content/uploads/2014/05/9-Rules-for-Surviving-an-Anime-Convention-featured.jpg");
-  color:white;
-  background-repeat: no-repeat;
-}
-.addCon{
-  width: 30%;
-  margin: 0 auto;
-  padding-top: 30px;
-}
-.login{
-  width: 30%;
-  margin: 0 auto;
-}
-.footer{
-  padding-top: 30px;
-}
-.thumbnail img {
-  width: 100%;
-}
-.thumbnail{
-  padding: 0;
-}
-.thumbnail .caption-full {
-  padding: 9px;
-}
-.avatar{
-  padding-top: 3px;
-  max-width: 72px;
-  max-height: 72px;
-}
-
-.conAttendee {
-  display: inline-block;
-}
-
-
-
-.navbar-right li {
-  display:inline-block;
-}
-
-.imgTooltip span {
-  display: none;
-  position:absolute;
-  background: #d4e2f9;
-  color: #000;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-}
-.imgTooltip:hover span {
-  display:block;
-}
-
-.flexContainer {
-  display: flex;
-  margin:0 10px 0 10px;
-  align-items: center;
-  background-color:#c6c7c4;
-  justify-content: center;
-}
-.cosplayFlex {
-  display: inline-flex;
-  margin:0 10px 0 10px;
-  align-items: center;
-  margin: 10px;
-  max-width: 20%;
-  max-height: 20%;
-  flex-flow:column;
-  background-color:#c6c7c4;
-  justify-content: space-around;
-}
-.cosplayFlex img {
-  max-width: 70%;
-
-}
-.columns {
-  padding: 5px;
-}
-/*PROFILE STYLES */
-.profileSide {
-  margin-left: auto;
-}
-.profileWell{
-  padding: 10px;
-  border: 1px solid black;
-  border-radius: 10%;
-    background-color: #eef0f2;
-
-}
-
-.profileImage{
-  width: 200px;
-  height: auto;
-
-}
-.profileMedia {
-  display: flex;
-  justify-content: space-between;
-}
 /*CONVENTION STYLES*/
 .imgContainer {
   overflow: hidden;
   width: 100%;
-  max-height: 15%;
-  padding: 10px;
+  max-height: 15%
+  padding: 0px;
+  margin: 0px;
 
 }
 .imgContainer img {
-  width: 200px;
-  height: 200px;
+  width: 120px;
+  height: 120px;
 }
 .contentWell {
-  padding: 10px;
+  padding: 0px;
 
+}
+.avatarContainer{
+  overflow: hidden;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.avatarContainer img {
+  overflow: hidden;
+  border-radius: 100%;
+  width: 75px;
+  height: 75px;
 }
 /* ====================================
 new class
@@ -166,25 +46,60 @@ new class
   background-position: center;
 }
 .landingBlurb{
-  margin-top: 15%;
   color:white;
   text-shadow: 1px 1px black;
+  margin-right: 10px;
 }
-.form-row label {
-  display: block;
+.landingNav {
+  list-style: none;
+  padding: 0;
 }
-.landingSignUp, .landingLogin {
-  margin-top: 10%;
-  margin-bottom: 20px;
-  padding: 10px;
+.landingSignUp {
+  margin-top: 100px;
   background-color: #EAE5DE;
   border-radius: 20px;
   box-shadow: 10px 10px 10px black;
 }
 .landingSignUp input {
-  background-color: whit;
+  background-color: white;
   border-radius: 1em;
-};
-.hidden{
-  display: none;
-};
+}
+#sideBar {
+  margin-right: 1.5em;
+  font-size: .75em;
+  height: 100%;
+}
+.homeContent{
+  padding-left: em;
+}
+
+/*USER PROFILE CLASSES  */
+.profileAvatar{
+
+}
+.profileAvatar img{
+  max-width: 100%;
+}
+
+
+
+/* ===========================
+Image Classes
+=========================== */
+.defaultCosplayPhoto{
+  width: 100%;
+
+}
+.defaultCosplayPhoto img {
+  width: 100%;
+}
+/* ===========================
+Cosplay PAGE Classes
+=========================== */
+.cosplayInfo{
+  width: 100%;
+
+}
+.cosplayDesc{
+  padding: 2em;
+}

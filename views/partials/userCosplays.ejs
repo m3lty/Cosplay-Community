@@ -1,0 +1,9 @@
+  <% user.uploads.slice(0, 3).forEach(function(cosplay){ %>
+    <div class="col-3 profileAvatar">
+      <a href="/cosplay/<%= cosplay._id %>">
+      <img src="<%= cosplay.defaultPicture %>">
+      <p><%= cosplay.character %> </p>
+      </a>
+      <small><%= countLikes(cosplay.likedBy) %> likes</small>
+    </div>
+  <% }); %>
