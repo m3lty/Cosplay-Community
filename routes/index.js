@@ -55,7 +55,12 @@ router.get("/", function(req, res){
 // NEW USER PAGE ROUTE
 //==========================
 router.get("/register", function(req,res){
-  res.render("register");
+  if(!req.isAuthenticated()){
+    res.render("register");
+  } else {
+    res.redirect("/")
+  }
+
 });
 //===================
 // NEW USER POST
@@ -100,7 +105,12 @@ router.get("/logout", function(req, res){
   res.redirect("/");
 });
 
-
+//===================
+//CATCH ALL 404
+//===================
+router.get("*", function(req,res){
+  res.render("404");
+})
 
 function isLoggedIn(req, res, next){
   if(req.isAuthenticated()){

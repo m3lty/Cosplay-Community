@@ -4,7 +4,6 @@ body, html {
 /* NAV STYLES */
 .navbar{
   background-color:#EAE5DE;
-  margin-bottom: 10px;
 }
 
 /*CONVENTION STYLES*/
@@ -21,8 +20,13 @@ body, html {
   height: 120px;
 }
 .contentWell {
-  padding: 0px;
+  margin: 5px;
+  max-width: 100%;
 
+}
+.contentWell small {
+  margin:0;
+  padding:0
 }
 .avatarContainer{
   overflow: hidden;
@@ -48,14 +52,15 @@ new class
 .landingBlurb{
   color:white;
   text-shadow: 1px 1px black;
-  margin-right: 10px;
+  margin-top:100px;
 }
 .landingNav {
   list-style: none;
   padding: 0;
 }
 .landingSignUp {
-  margin-top: 100px;
+  margin-top: 5em;
+  margin-bottom: 5em;
   background-color: #EAE5DE;
   border-radius: 20px;
   box-shadow: 10px 10px 10px black;
@@ -74,7 +79,8 @@ new class
 }
 
 /*USER PROFILE CLASSES  */
-.profileAvatar{
+.bioBlurb{
+  margin-top:10px
 
 }
 .profileAvatar img{

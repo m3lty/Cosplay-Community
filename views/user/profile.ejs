@@ -9,7 +9,7 @@
         </div>
         <div class="col col-md-6 align-self-right">
           <h1><%= user.username %> </h1>
-          <p><%= user.bio %></p>
+
           <% if(user.socialmedia.twitter) { %>
             <a href="http://twitter.com/<%=user.socialmedia.twitter %>"><i class="fa fa-twitter"></i> <%=user.socialmedia.twitter%></a>
           <% }; %>
@@ -22,9 +22,18 @@
           <% if(user.socialmedia.tumblr) { %>
             <a href="#"><i class="fa fa-tumblr"></i> <%=user.socialmedia.tumblr%></a>
           <% }; %>
+          <p class="bioBlurb"><%= user.bio %></p>
+
         </div>
-        <div class="col-2"></div>
-      <% include ../partials/userCosplays %>
-    </div>
+      </div>
+
+        <div class="col-md-2"></div>
+        <hr>
+      <div class="row">
+        <h2><%= user.username %>'s cosplays:</h2>
+      </div>
+        <% include ../partials/userCosplays %>
+
+
 </div>
 <% include ../partials/footer %>

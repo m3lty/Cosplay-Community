@@ -1,12 +1,12 @@
 <div class="row">
   <% conventions.slice(0, 3).forEach(function(cons){ %>
-    <div class="col-md-2 col-sm-2 col-xs-2 contentWell text-center">
-      <div class="imgContainer">
-
-      </div>
-      <h4> <%= cons.name %> </h4>
-      <h5> <%= cons.location %> </h5>
-      <a href="/cons/<%= cons._id %>" class="btn btn-primary">More Info</a>
+      <div class="col-md-3 col-sm-4 col-2 contentWell text-center">
+        <div class="imgContainer">
+        <img src="<%=cons.image %>">
+        </div>
+        <h4> <%= cons.name %> </h4>
+        <h5> <%= cons.location %> </h5>
+        <a href="/cons/<%= cons._id %>" class="btn btn-primary">More Info</a>
 
       </div>
   <% }); %>

@@ -23,17 +23,22 @@
               <button class="btn btn-md btn-success">Like</button>
               </form>
           <%  }; %>
-          <%};%>
-          <% if(currentUser && cosplay.author.id.equals(currentUser._id)){ %>
-            <a href="/cosplay/<%=cosplay._id %>/edit" class="btn btn-warning">Edit me</a>
-            <form action="/cosplay/<%=cosplay._id%>?_method=DELETE" method="POST">
-              <button class="btn btn-danger">Delete</button>
+
+
             </form>
           <% } %>
         </div>
         <div class="col-12 col-md-12 text-center cosplayDesc">
           <p> <%=cosplay.desc %> </p>
         </div>
+        <% if(currentUser && cosplay.author.id.equals(currentUser._id)){ %>
+          <form action="/cosplay/<%=cosplay._id%>/edit" method="POST">
+            <a href="/cosplay/<%=cosplay._id %>/edit" class="btn btn-warning">Edit me</a>
+          </form>
+          <form action="/cosplay/<%=cosplay._id%>?_method=DELETE" method="POST">
+            <button class="btn btn-danger">Delete</button>
+          </form>
+            <%}; %>
       </div>
     </div>
 
