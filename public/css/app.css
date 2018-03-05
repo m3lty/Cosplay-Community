@@ -4,6 +4,7 @@ body, html {
 /* NAV STYLES */
 .navbar{
   background-color:#EAE5DE;
+  margin-bottom: 1em;
 }
 
 /*CONVENTION STYLES*/
@@ -23,6 +24,9 @@ body, html {
   margin: 5px;
   max-width: 100%;
 
+}
+.contentWell img {
+  max-width: 100%:
 }
 .contentWell small {
   margin:0;
@@ -85,6 +89,17 @@ new class
 }
 .profileAvatar img{
   max-width: 100%;
+}
+.profileAvatar span{
+  display: none;
+  position:absolute;
+  background: #d4e2f9;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.profileAvatar:hover span{
+  display: flex;
 }
 
 

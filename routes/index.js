@@ -108,9 +108,9 @@ router.get("/logout", function(req, res){
 //===================
 //CATCH ALL 404
 //===================
-router.get("*", function(req,res){
-  res.render("404");
-})
+// router.get("*", function(req,res){
+//   res.render("404");
+// });
 
 function isLoggedIn(req, res, next){
   if(req.isAuthenticated()){

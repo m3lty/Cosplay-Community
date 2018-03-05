@@ -1,13 +1,23 @@
 <% include ../partials/header %>
+<% include ../partials/navbar %>
+<div class="container">
+  <div class="row">
+    <% include ../partials/sidebar %>
+      <div class="col-12 col-md-9">
+        <h1>All Conventions</h1>
+        <p>Don't see your convention listed here? <a href="cons/newcon">Add a new one!</a></p>
 
-<% conventions.forEach(function(cons){ %>
-  <div class="conventionWell">
-  <h4> <%= cons.name %> </h4>
-  <h5> <%= cons.location %> </h5>
-  <h6> <%= cons.date %> </h6>
+        <% conventions.slice(0, 3).forEach(function(cons){ %>
+            <div class="col-md-3 col-sm-4 col-2 contentWell">
+              <div class="imgContainer">
+              <img src="<%=cons.image %>">
+              </div>
+              <h4> <%= cons.name %> </h4>
+              <h5> <%= cons.location %> </h5>
+              <a href="/cons/<%= cons._id %>" class="btn btn-primary">More Info</a>
+            </div>
+        <% }); %>
+      </div>
   </div>
-<% }); %>
-
-
-
+</div>
 <% include ../partials/footer %>

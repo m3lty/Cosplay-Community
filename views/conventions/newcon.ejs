@@ -1,6 +1,11 @@
 <% include ../partials/header %>
+<% include ../partials/navbar %>
 <div class="container">
   <div class="row addCon">
+    <% include ../partials/sidebar %>
+    <div class="col-12 col-md-9">
+      <h1>New Convention</h2>
+      <p>This form is incomplete and may or may not function correctly.</p>
     <form action="/cons" enctype="multipart/form-data" method="post">
       <div class="form-group">
         <input class="form-control" type="text" name="name" placeholder="Convention Name">
@@ -22,6 +27,7 @@
       </div>
     </form>
     <a href="/">Back to Convention List</a>
+  </div>
   </div>
 </div>
 

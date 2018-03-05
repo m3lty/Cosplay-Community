@@ -40,6 +40,7 @@ router.get("/:id", function(req, res){
       console.log(err);
     } else {
       foundUser.attending.sort(tools.upcomingSort);
+      foundUser.uploads.sort(tools.popularSort);
       res.render("user/profile", {user: foundUser});
     }
   });

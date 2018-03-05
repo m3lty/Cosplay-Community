@@ -1,29 +1,16 @@
 <% include ../partials/header %>
+<% include ../partials/navbar %>
 <div class="container">
-  <h1>Conventions</h1>
-  <p>Don't see your convention listed here? <a href="cons/newcon">Add a new one!</a></p>
-
-
-<div class="flexContainer">
-  <div class="conIndex">
-    <h1>Upcoming Cons</h1>
-
-    <div class="upcomingCons">
-
-      <% conventions.slice(0, 3).forEach(function(cons){ %>
-        <div class="conventionWell">
-            <h4> <%= cons.name %> </h4>
-            <h5> <%= cons.location %> </h5>
-            <h6> <%= cons.date %> </h6>
-          <p>
-            <a href="/cons/<%= cons._id %>" class="btn btn-primary">More Info</a>
-          </p>
-          </div>
-      <% }); %>
+  <div class= "row">
+    <% include ../partials/sidebar %>
+    <div class="col-12 col-md-9">
+      <h1>Conventions</h1>
+      <p>Don't see your convention listed here? <a href="cons/newcon">Add a new one!</a></p>
+      <% include ../partials/upcomingCons %>
     </div>
-    <a href="/cons/showall">View all cons</a>
+      <a href="/cons/showall">View all cons</a>
+    </div>
+
+    </div>
   </div>
-</div>
-
-
 <% include ../partials/footer %>

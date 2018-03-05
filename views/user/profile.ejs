@@ -27,12 +27,16 @@
         </div>
       </div>
 
-        <div class="col-md-2"></div>
-        <hr>
       <div class="row">
-        <h2><%= user.username %>'s cosplays:</h2>
+        <div class="col-md-2"></div>
+        <div class="col col-md-9">
+          <hr>
+          <h2><%= user.username %>'s cosplays:</h2>
+          <% include ../partials/userCosplays %>
+          <h2><%= user.username %>'s upcoming conventions.</h2>
+          
+        </div>
       </div>
-        <% include ../partials/userCosplays %>
 
 
 </div>
