@@ -1,5 +1,3 @@
-A very very simple web app. Please forgive me.
+A web app for lovers of nerd culture, conventions, and cosplay.
 
-
-
-Colorscheme:
+I think I may be abandoning this project for a while.
